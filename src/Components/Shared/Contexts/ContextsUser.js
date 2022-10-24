@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 const ContextsUser = ({ children }) => {
 
-    const user = { displayName: 'taskin' };
+    const user = { displayName: '' };
 
     const authInfo = {user}
 

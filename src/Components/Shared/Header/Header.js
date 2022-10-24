@@ -5,8 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import '../../../assets/my_logo.png';
 import Switch from "react-switch";
-import './Header.css';
 import { AuthContext } from '../Contexts/ContextsUser';
+import './Header.css';
 
 const Header = () => {
 
@@ -15,29 +15,32 @@ const Header = () => {
         setChecked(nextChecked);
     };
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand><Link className='fw-bold me-5' to='/'>PLwS</Link></Navbar.Brand>
+                <Navbar.Brand><Link className='fw-bold me-5' style={{ textDecoration: 'none' }} to='/'>PLwS</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link className='me-3 text-dark fw-bold' to='/courses'>Courses</Link>
-                        <Link className='me-3 text-dark fw-bold' to='/faq'>FAQ</Link>
-                        <Link className='me-3 text-dark fw-bold' to='/blog'>Blog</Link>
+                        <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/categories'>Courses</Link>
+                        <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/faq'>FAQ</Link>
+                        <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/blog'>Blog</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link><p>{user?.displayName}</p></Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                        <Nav.Link><Switch
+                        <>
+                            {
+                                user?.displayName ?
+                                    <p className='me-3'>{user?.displayName}</p> :
+                                    <Link className='me-3' style={{ textDecoration: 'none' }}>Log-in</Link>
+                            }
+                        </>
+                        <><Switch
                             onChange={handleChange}
                             checked={checked}
                             className="react-switch"
-                        /></Nav.Link>
+                        /></>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
