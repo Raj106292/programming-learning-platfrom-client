@@ -7,7 +7,6 @@ import '../../../assets/my_logo.png';
 import Switch from "react-switch";
 import { AuthContext } from '../Contexts/ContextsUser';
 import "./Header.css";
-import { Tooltip } from 'react-bootstrap';
 
 const Header = () => {
 
@@ -16,7 +15,16 @@ const Header = () => {
         setChecked(nextChecked);
     };
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                
+            }).catch((error) => {
+                console.log(error.message);
+            });
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -37,7 +45,7 @@ const Header = () => {
                                         <>
                                             <img className='me-3' style={{ width: '40px', height: '40px', borderRadius: '20px' }} src={user?.photoURL} alt="" />
                                         </>
-                                        <Link className='me-3' style={{ textDecoration: 'none' }} to='/logout'>Log-out</Link>
+                                        <button onClick={handleLogOut} className='me-3 btn btn-warning'>Log-out</button>
                                     </div> :
                                     <Link className='me-3' style={{ textDecoration: 'none' }} to='/login'>Log-in</Link>
                             }
