@@ -33,7 +33,7 @@ const Header = () => {
                             {
                                 user?.displayName ?
                                     <p className='me-3'>{user?.displayName}</p> :
-                                    <Link className='me-3' style={{ textDecoration: 'none' }}>Log-in</Link>
+                                    <Link className='me-3' style={{ textDecoration: 'none' }} to='/login'>Log-in</Link>
                             }
                         </>
                         <><Switch
