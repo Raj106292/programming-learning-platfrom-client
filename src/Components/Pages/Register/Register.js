@@ -5,7 +5,7 @@ import { AuthContext } from '../../Shared/Contexts/ContextsUser';
 
 const Register = () => {
 
-    const { createNewUser } = useContext(AuthContext);
+    const { createNewUser, updateUser } = useContext(AuthContext);
     const [isCheck, setIsCheck] = useState(false);
     const [error, setError] = useState('');
 
@@ -21,6 +21,12 @@ const Register = () => {
         createNewUser(email, password)
             .then(result => {
                 const user = result.user;
+                updateUser(name, photoURL)
+                    .then(() => {
+                        setError('');
+                    }).catch((error) => {
+                        setError(error.message);
+                    });
                 console.log(user);
                 form.reset();
                 setIsCheck(false);
@@ -33,7 +39,12 @@ const Register = () => {
     }
 
     const handleCheck = () => {
-        setIsCheck(true);
+        if (!isCheck) {
+            setIsCheck(true);
+        }
+        else {
+            setIsCheck(false);
+        }
     }
 
     return (
@@ -60,7 +71,7 @@ const Register = () => {
                     <Form.Check onClick={handleCheck} type="checkbox" label="Accept Terms and Conditions" />
                 </Form.Group>
                 <p className='danger'>{error}</p>
-                <Button variant="primary" type="submit" disabled={!isCheck}>
+                <Button variant="primary" type="submit" disabled={!isCheck ? true : false}>
                     Submit
                 </Button>
             </Form>

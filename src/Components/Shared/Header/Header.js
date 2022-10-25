@@ -32,7 +32,10 @@ const Header = () => {
                         <>
                             {
                                 user?.displayName ?
-                                    <p className='me-3'>{user?.displayName}</p> :
+                                    <>
+                                        <p className='me-3'>{user?.displayName}</p>
+                                        <Link className='me-3' style={{ textDecoration: 'none' }} to='/logout'>Log-out</Link>
+                                    </> :
                                     <Link className='me-3' style={{ textDecoration: 'none' }} to='/login'>Log-in</Link>
                             }
                         </>
