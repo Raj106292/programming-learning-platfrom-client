@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Shared/Contexts/ContextsUser';
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
 
     return (
         <div>
-            <h2>This is log in page</h2>
+            <h2>Login To Your Account</h2>
             <Form onSubmit={handleLogInForm} className="w-50">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -42,10 +43,11 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" required/>
                 </Form.Group>
+                <p className='text-danger'>{error}</p>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                <p className='text-danger'>{error}</p>
+                <p>Don't have an account? <Link to='/register' className='text-primary' style={{textDecoration: 'none'}}>Please Register</Link></p>
             </Form>
         </div>
     );
