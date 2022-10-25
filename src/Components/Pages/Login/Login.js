@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,12 +7,13 @@ import { AuthContext } from '../../Shared/Contexts/ContextsUser';
 
 const Login = () => {
 
-    const { userLogIn, userLogInWithGoogle } = useContext(AuthContext);
+    const { userLogIn, userLogInWithGoogle, userLogInWithGithub } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const from = location.state?.from?.pathname || '/'
 
@@ -36,7 +37,7 @@ const Login = () => {
                 const errorMessage = error.message;
                 setError(errorMessage);
             });
-    }
+    };
 
     const handleGoogleLogIn = () => {
         userLogInWithGoogle(googleProvider)
@@ -48,7 +49,19 @@ const Login = () => {
                 const errorMessage = error.message;
                 setError(errorMessage);
             });
-    }
+    };
+
+    const handleGithubLogIn = () => {
+        userLogInWithGithub(githubProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage);
+            });
+    };
 
     return (
         <div>
@@ -77,7 +90,7 @@ const Login = () => {
                 <button onClick={handleGoogleLogIn} className='w-50 p-2 rounded'>Google Log-in</button>
             </div>
             <div>
-                <button className='w-50 p-2 rounded'>Github Log-in</button>
+                <button onClick={handleGithubLogIn} className='w-50 p-2 rounded'>Github Log-in</button>
             </div>
         </div>
     );

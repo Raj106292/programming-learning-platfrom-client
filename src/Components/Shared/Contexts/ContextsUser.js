@@ -29,12 +29,17 @@ const ContextsUser = ({ children }) => {
     const userLogInWithGoogle = (provider) => {
         setLoader(true);
         return signInWithPopup(auth, provider);
+    };
+
+    const userLogInWithGithub = (provider) => {
+        setLoader(true);
+        return signInWithPopup(auth, provider);
     }
 
     const logOut = () => {
         setLoader(true);
         return signOut(auth)
-    }
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -46,9 +51,9 @@ const ContextsUser = ({ children }) => {
         return () => {
             unsubscribe();
         }
-    }, [])
+    }, []);
 
-    const authInfo = {user, createNewUser, updateUser, userLogIn, logOut, userLogInWithGoogle, loader};
+    const authInfo = {user, createNewUser, updateUser, userLogIn, logOut, userLogInWithGoogle, userLogInWithGithub, loader};
 
     return (
         <div>
