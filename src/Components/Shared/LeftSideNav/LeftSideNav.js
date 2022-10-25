@@ -13,11 +13,11 @@ const LeftSideNav = () => {
 
     return (
         <div>
-            <h3>We have total {courses.length} courses</h3>
+            <h3><u>We have total {courses.length} courses</u></h3>
             <div>
                 {
                     courses.map(course => <p key={course.id}>
-                        <Link to={`/categories/${course.id}`}>{course.name}</Link>
+                        <Link to={`/courses/${course.id}`}>{course.name}</Link>
                     </p>)
                 }
             </div>
