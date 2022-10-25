@@ -8,7 +8,7 @@ import { Col, Row } from 'react-bootstrap';
 const Courses = () => {
 
     const allCourses = useLoaderData();
-    console.log(allCourses);
+    // console.log(allCourses);
 
     return (
         <div>

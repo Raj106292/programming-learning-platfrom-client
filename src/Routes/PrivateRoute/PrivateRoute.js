@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Components/Shared/Contexts/ContextsUser';
+import Spinner from 'react-bootstrap/Spinner';
 
 const PrivateRoute = ({children}) => {
 
-    const {user} = useContext(AuthContext);
+    const {user, loader} = useContext(AuthContext);
+    const location = useLocation();
+
+    if(loader){
+        return <Spinner animation="border" variant="secondary" />
+    }
 
     if(!user){
-        return <Navigate to='/login'></Navigate>
+        return <Navigate to='/login' state={{from: location}} replace></Navigate>
     }
     return children;
 };

@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 const Course = () => {
 
     const courseData = useLoaderData();
-    console.log(courseData);
+    // console.log(courseData);
 
     return (
         <div>
@@ -19,7 +19,7 @@ const Course = () => {
                     <Card.Text>
                         {courseData.details}
                     </Card.Text>
-                    <Link to={`/course/${courseData.id}`}><Button variant="primary">Access The Course</Button></Link>
+                    <Link to={`/course/${courseData.id}`}><Button variant="primary">Get Premium Access</Button></Link>
                 </Card.Body>
                 <Card.Footer className="text-muted">2 days ago</Card.Footer>
             </Card>
