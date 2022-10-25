@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../Shared/Contexts/ContextsUser';
 
 const Login = () => {
+
+    const {userLogIn} = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     const handleLogInForm = (event) => {
         event.preventDefault();
@@ -12,6 +16,17 @@ const Login = () => {
         const password = form.password.value;
 
         console.log(email, password);
+        userLogIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            setError(errorMessage);
+          });
     }
 
     return (
@@ -30,6 +45,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                <p className='text-danger'>{error}</p>
             </Form>
         </div>
     );
