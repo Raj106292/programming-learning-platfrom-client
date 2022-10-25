@@ -19,7 +19,7 @@ const Course = () => {
                     <Card.Text>
                         {courseData.details}
                     </Card.Text>
-                    <Link to='/checkout'><Button variant="primary">Access The Course</Button></Link>
+                    <Link to={`/course/${courseData.id}`}><Button variant="primary">Access The Course</Button></Link>
                 </Card.Body>
                 <Card.Footer className="text-muted">2 days ago</Card.Footer>
             </Card>

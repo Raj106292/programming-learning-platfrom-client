@@ -36,7 +36,8 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/checkout',
+                path: '/course/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]
