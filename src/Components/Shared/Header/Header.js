@@ -35,7 +35,7 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/categories'>Courses</Link>
                         <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/faq'>FAQ</Link>
-                        <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/blog'>Blog</Link>
+                        <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/blogs'>Blogs</Link>
                     </Nav>
                     <Nav className="d-flex align-items-center">
                         <>
