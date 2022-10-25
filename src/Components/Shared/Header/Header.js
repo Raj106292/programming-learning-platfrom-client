@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import '../../../assets/my_logo.png';
 import Switch from "react-switch";
 import { AuthContext } from '../Contexts/ContextsUser';
-import './Header.css';
+import "./Header.css";
+import { Tooltip } from 'react-bootstrap';
 
 const Header = () => {
 
@@ -28,14 +29,16 @@ const Header = () => {
                         <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/faq'>FAQ</Link>
                         <Link className='me-3 text-dark fw-bold' style={{ textDecoration: 'none' }} to='/blog'>Blog</Link>
                     </Nav>
-                    <Nav>
+                    <Nav className="d-flex align-items-center">
                         <>
                             {
                                 user?.displayName ?
-                                    <>
-                                        <p className='me-3'>{user?.displayName}</p>
+                                    <div className="d-flex align-items-center">
+                                        <>
+                                            <img className='me-3' style={{ width: '40px', height: '40px', borderRadius: '20px' }} src={user?.photoURL} alt="" />
+                                        </>
                                         <Link className='me-3' style={{ textDecoration: 'none' }} to='/logout'>Log-out</Link>
-                                    </> :
+                                    </div> :
                                     <Link className='me-3' style={{ textDecoration: 'none' }} to='/login'>Log-in</Link>
                             }
                         </>
