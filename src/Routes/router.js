@@ -4,7 +4,9 @@ import Blogs from "../Components/Pages/Blogs/Blogs";
 import CheckOut from "../Components/Pages/CheckOut/CheckOut";
 import Course from "../Components/Pages/Course/Courses";
 import Courses from "../Components/Pages/Courses/Courses";
+import FAQ from "../Components/Pages/FAQ/FAQ";
 import Login from "../Components/Pages/Login/Login";
+import NotFound from "../Components/Pages/NotFound/NotFound";
 import Register from "../Components/Pages/Register/Register";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -20,8 +22,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/categories',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://programming-learning-platform-server.vercel.app/courses'),
                 element: <Courses></Courses>
+            },
+            {
+                path: '/faq',
+                element: <FAQ></FAQ>
             },
             {
                 path: '/blogs',
@@ -29,7 +35,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({params}) => fetch(`https://programming-learning-platform-server.vercel.app/courses/${params.id}`),
                 element: <Course></Course>
             },
             {
@@ -42,8 +48,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/course/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                loader: ({params}) => fetch(`https://programming-learning-platform-server.vercel.app/course/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+            },
+            {
+                path: '/*',
+                element: <NotFound></NotFound>
             }
         ]
     }
