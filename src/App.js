@@ -4,7 +4,7 @@ import { routes } from './Routes/router';
 
 function App() {
   return (
-    <div>
+    <div style={{maxWidth: '1280px', margin: '0px auto'}}>
       <RouterProvider router={routes}></RouterProvider>
     </div>
   );

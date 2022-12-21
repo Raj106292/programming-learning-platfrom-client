@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import '../../../assets/my_logo.png';
 import { AuthContext } from '../Contexts/ContextsUser';
 import "./Header.css";
-import { FaSun, FaMoon } from "react-icons/fa";
 
 const Header = () => {
 
@@ -45,13 +44,6 @@ const Header = () => {
                                     <Link className='me-3' style={{ textDecoration: 'none' }} to='/login'>Log-in</Link>
                             }
                         </>
-                        <div className='d-flex align-items-center'>
-                            <FaSun className='me-2'></FaSun>
-                            <div className="form-check form-switch">
-                                <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                            </div>
-                            <FaMoon className='ms-1'></FaMoon>
-                        </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
